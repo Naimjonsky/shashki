@@ -227,6 +227,8 @@ async function startServer() {
     });
   });
 
+  const server = http.createServer(app);
+
   if (IS_PROD) {
     const distDir = path.resolve(__dirname, 'dist');
     app.use(express.static(distDir));
@@ -236,14 +238,26 @@ async function startServer() {
   } else {
     const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        hmr: false,
+        ws: { server, path: '/vite-hmr' },
+      },
       appType: 'spa',
     });
     app.use(vite.middlewares);
   }
 
-  const server = http.createServer(app);
-  const wss = new WebSocketServer({ server, path: '/ws' });
+  const wss = new WebSocketServer({ noServer: true });
+
+  server.on('upgrade', (request, socket, head) => {
+    const { pathname } = new URL(request.url ?? '', 'http://localhost');
+    if (pathname === '/ws') {
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        wss.emit('connection', ws, request);
+      });
+    }
+  });
 
   wss.on('connection', (ws) => {
     clientMap.set(ws, { ws, clientId: '', roomId: null });
