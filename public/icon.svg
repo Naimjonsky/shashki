@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#171311" />
+  <rect x="44" y="44" width="424" height="424" rx="60" fill="#2A201A" stroke="#C88A3B" stroke-opacity="0.35" stroke-width="6" />
+  <clipPath id="board-clip">
+    <rect x="72" y="72" width="368" height="368" rx="36" />
+  </clipPath>
+  <g clip-path="url(#board-clip)">
+    <rect x="72" y="72" width="184" height="184" fill="#EFE0C6" />
+    <rect x="256" y="72" width="184" height="184" fill="#5E3B24" />
+    <rect x="72" y="256" width="184" height="184" fill="#5E3B24" />
+    <rect x="256" y="256" width="184" height="184" fill="#EFE0C6" />
+  </g>
+  <!-- White checker piece bottom-left -->
+  <circle cx="164" cy="348" r="66" fill="#DFD0B7" stroke="#9C8465" stroke-width="6" />
+  <circle cx="164" cy="348" r="46" fill="#FAF4E8" stroke="#C4B091" stroke-width="4" />
+  <!-- Black King checker piece top-right -->
+  <circle cx="348" cy="164" r="66" fill="#1A1513" stroke="#0D0A09" stroke-width="6" />
+  <circle cx="348" cy="164" r="48" fill="#251F1B" stroke="#C88A3B" stroke-opacity="0.7" stroke-width="4" />
+  <!-- Brass Crown -->
+  <path
+    d="M316 184h64v8h-64v-8zm2-11-6-31 20 14 16-24 16 24 20-14-6 31h-60z"
+    fill="#E3AF5B"
+  />
+</svg>

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color-scheme: dark;
+  }
+
+  button:not(:disabled),
+  a[href] {
+    cursor: pointer;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom subtle scrollbar for move history & chat */
+.club-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.club-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.club-scroll::-webkit-scrollbar-thumb {
+  background: rgba(245, 239, 230, 0.14);
+  border-radius: 3px;
+}
+
+.club-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 239, 230, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
